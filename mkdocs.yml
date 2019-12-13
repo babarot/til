@@ -1,0 +1,66 @@
+# Project information
+site_name: 'Documentation'
+site_description: 'hoge!'
+site_author: 'Masaki ISHIYAMA'
+site_url: 'https://b4b4r07.github.io/kbase/'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'blue grey'
+    accent: 'blue grey'
+  logo:
+    icon: 'school'
+  favicon: 'assets/images/favicon.png'
+  # feature:
+  #   tabs: true
+
+markdown_extensions:
+  - fontawesome_markdown
+  - meta
+  - codehilite
+  - admonition
+  - toc:
+      permalink: "#"
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true
+      social_url_shorthand: true
+      user: b4b4r07
+      repo: kbase
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Customization
+extra:
+  social:
+    - type: globe
+      link: https://tellme.tokyo
+    - type: github
+      link: https://github.com/b4b4r07
+    - type: twitter
+      link: https://twitter.com/b4b4r07
+
+extra_css:
+    - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+
+# Repository
+repo_name: b4b4r07/kbase
+repo_url: https://github.com/b4b4r07/kbase
+edit_uri: edit/master/docs
+
+# Copyright
+copyright: 'Copyright &copy; 2019 Masaki ISHIYAMA'
