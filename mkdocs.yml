@@ -1,19 +1,19 @@
 # Project information
-site_name: 'Documentation'
-site_description: 'hoge!'
+site_name: 'Documentations'
+site_description: 'Personal documentations abou what I learn'
 site_author: 'Masaki ISHIYAMA'
-site_url: 'https://b4b4r07.github.io/kbase/'
+site_url: 'https://b4b4r07.github.io/docs/'
+docs_dir: pages
 
 theme:
   name: 'material'
+  language: 'ja'
   palette:
     primary: 'blue grey'
     accent: 'blue grey'
   logo:
     icon: 'school'
   favicon: 'assets/images/favicon.png'
-  # feature:
-  #   tabs: true
 
 markdown_extensions:
   - fontawesome_markdown
@@ -46,6 +46,8 @@ markdown_extensions:
 
 # Customization
 extra:
+  search:
+    language: 'ja'
   social:
     - type: globe
       link: https://tellme.tokyo
@@ -58,12 +60,16 @@ extra_css:
     - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
 
 # Repository
-repo_name: b4b4r07/kbase
-repo_url: https://github.com/b4b4r07/kbase
-edit_uri: edit/master/docs
+# repo_name: b4b4r07/kbase
+# repo_url: https://github.com/b4b4r07/kbase
+# edit_uri: edit/master/docs
 
 # Copyright
 copyright: 'Copyright &copy; 2019 Masaki ISHIYAMA'
 
 nav:
-  - Home: index.md
+  - Guides:
+      - GKE と Cloud Run、どう使い分けるべきか: guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers.md
+      - guides/pdb.md
+  - References:
+    - Kubernetes: references/kubernetes.md
