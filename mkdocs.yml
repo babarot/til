@@ -1,6 +1,6 @@
 # Project information
-site_name: 'Documentations'
-site_description: 'Personal documentations abou what I learn'
+site_name: 'TIL'
+site_description: 'Personal documentations about what I learn'
 site_author: 'Masaki ISHIYAMA'
 site_url: 'https://b4b4r07.github.io/docs/'
 docs_dir: pages
@@ -60,9 +60,9 @@ extra_css:
     - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
 
 # Repository
-# repo_name: b4b4r07/kbase
-# repo_url: https://github.com/b4b4r07/kbase
-# edit_uri: edit/master/docs
+repo_name: b4b4r07/docs
+repo_url: https://github.com/b4b4r07/docs
+edit_uri: edit/master/pages
 
 # Copyright
 copyright: 'Copyright &copy; 2019 Masaki ISHIYAMA'
