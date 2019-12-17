@@ -68,6 +68,9 @@ edit_uri: edit/master/pages
 copyright: 'Copyright &copy; 2019 Masaki ISHIYAMA'
 
 nav:
+  - Concepts:
+    - Kubernetes:
+      - Conponents: concepts/kubernetes/components.md
   - Guides:
       - GKE と Cloud Run、どう使い分けるべきか: guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers.md
       - guides/pdb.md
