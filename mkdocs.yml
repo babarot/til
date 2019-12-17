@@ -3,23 +3,40 @@ site_name: 'Documentations'
 site_description: 'Personal documentations about what I learn'
 site_author: 'Masaki ISHIYAMA'
 site_url: 'https://b4b4r07.github.io/docs/'
-docs_dir: pages
+docs_dir: docs
 
 theme:
   name: 'material'
+  # name: null
+  # custom_dir: theme
   language: 'ja'
   palette:
     primary: 'blue grey'
     accent: 'blue grey'
-  logo:
-    icon: 'school'
-  favicon: 'assets/images/favicon.png'
+  static_templates:
+    - 404.html
+  feature:
+    tabs: false
+  include_search_page: false
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      type: timeago
+      locale: nl
 
 markdown_extensions:
   - fontawesome_markdown
   - meta
+  - footnotes
   - codehilite
   - admonition
+  - def_list
   - toc:
       permalink: "#"
   - pymdownx.arithmatex
@@ -57,22 +74,26 @@ extra:
       link: https://twitter.com/b4b4r07
 
 extra_css:
-    - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+  - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
 
 # Repository
 repo_name: b4b4r07/docs
 repo_url: https://github.com/b4b4r07/docs
-edit_uri: edit/master/pages
+edit_uri: edit/master/docs
+# repo_name: '<i class="fa fa-heart-o"></i> babarot'
+# repo_url: 'https://github.com/b4b4r07/docs'
 
 # Copyright
 copyright: 'Copyright &copy; 2019 Masaki ISHIYAMA'
 
 nav:
+  # - Overview:
+  #   - Home: docs/overview/index.md
   - Concepts:
     - Kubernetes:
       - Conponents: concepts/kubernetes/components.md
+      - Helm: concepts/kubernetes/helm.md
   - Guides:
-      - GKE と Cloud Run、どう使い分けるべきか: guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers.md
-      - guides/pdb.md
+      - GKE と Cloud Run、どう使い分けるべきか: docs/guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers.md
   - References:
     - Kubernetes: references/kubernetes.md
