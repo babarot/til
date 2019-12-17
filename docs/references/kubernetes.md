@@ -6,8 +6,6 @@ The terms that are typically used to describe cluster components could be
 confusing, so in an effort to clarify things, here's a schema of the most
 important ones, and their definition.
 
-![components](img/cluster_components.png)
-
 #### CPU
 
 : A Central Processing Unit (CPU), or core, or CPU core, is the smallest unit

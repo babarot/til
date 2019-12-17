@@ -94,6 +94,6 @@ nav:
       - Conponents: concepts/kubernetes/components.md
       - Helm: concepts/kubernetes/helm.md
   - Guides:
-      - GKE と Cloud Run、どう使い分けるべきか: docs/guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers.md
+      - GKE と Cloud Run、どう使い分けるべきか: guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers.md
   - References:
     - Kubernetes: references/kubernetes.md
