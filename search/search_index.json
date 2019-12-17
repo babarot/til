@@ -1,1 +1,1 @@
-{"config":{"lang":["en"],"prebuild_index":false,"separator":"[\\s\\-]+"},"docs":[{"location":"","text":"Hello, everyone.","title":"Stein CLI Commands"}]}
+{"config":{"lang":["en"],"prebuild_index":false,"separator":"[\\s\\-]+"},"docs":[{"location":"","text":"Hello, everyone.","title":"Stein CLI Commands"},{"location":"references/kubernetes/","text":"hello","title":"Kubernetes"},{"location":"references/kubernetes/pdb/","text":"Hello, everyone.","title":"Pdb"}]}
