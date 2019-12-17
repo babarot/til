@@ -56,10 +56,19 @@ markdown_extensions:
       repo: kbase
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences
+  # - pymdownx.superfences:
+  #     custom_fences:
+  #       - name: mermaid
+  #         class: mermaid
+  #         format: !!python/name:pymdownx.superfences.fence_div_format
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
 
 # Customization
 extra:
@@ -73,8 +82,12 @@ extra:
     - type: twitter
       link: https://twitter.com/b4b4r07
 
+extra_javascript:
+  - https://unpkg.com/mermaid@8.4.2/dist/mermaid.min.js
+
 extra_css:
-  - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+  - https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
+  - https://unpkg.com/mermaid@8.4.2/dist/mermaid.css
 
 # Repository
 repo_name: b4b4r07/docs

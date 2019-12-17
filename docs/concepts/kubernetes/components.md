@@ -4,7 +4,8 @@
 
 Kubernetesの構成コンポーネントについて一覧をまとめてみました。Kubernetes 1.2時点での情報です。
 
-:link:: 外部のプロジェクト
+!!! info "注釈"
+    :link:: 外部のプロジェクト
 
 コンポーネント|種別|説明
 ---|---|---
@@ -22,7 +23,6 @@ kubectl | client | KubernetesのCLIクライアント
 [SkyDNS :link:](#skydns-link) | add-on | クラスタ内DNSのDNSサーバー
 [kube2sky](#kube2sky) | add-on | SkyDNSにKubernetesの情報を反映させるブリッジ
 [heapster](#heapster) | add-on | Kuernetesのパフォーマンス情報を集約する仕組み
-[helm(Deployment Manager)](#helm-deployment-manager) | add-on | Kubernetesの設定をテンプレート化しデプロイを管理しやすくする仕組み
 
 ## アーキテクチャ
 
@@ -99,7 +99,22 @@ KubernetesのAPIサーバーで、主にKubernetesのリソース情報の管理
 
 ### kube-controller-manager
 
-Replication Controllerなどの各種リソースのコントローラーを起動するマネージャーです。各コントローラーはgoroutineで起動されます。(参考: [controllermanager.go#L185-L390](https://github.com/kubernetes/kubernetes/blob/release-1.2/cmd/kube-controller-manager/app/controllermanager.go#L185-L390))。なお、Replication Controllerはリソース名自体に"Controller"とつくため、コントローラーは"RepplicationManager"という名前になっています。(参考: [replication_controller.go#L63-L64のコメント](https://github.com/kubernetes/kubernetes/blob/b8d000853edbfe3d0d9bcd85e8e511a98b6ac6af/pkg/controller/replication/replication_controller.go#L63-L64))
+Kubernetesの各種リソースのコントローラーを起動するマネージャーです。
+
+```mermaid
+graph TD;
+    A(kube-controller-manager)-->D(Deployment);
+    A-->S(Service);
+    A-->C(CronJob);
+    A-->R(ReplicaSet);
+    A-->X(...);
+```
+
+各コントローラーはgoroutineで起動されます。(参考: [controllermanager.go#L185-L390](https://github.com/kubernetes/kubernetes/blob/release-1.2/cmd/kube-controller-manager/app/controllermanager.go#L185-L390))。
+
+!!! note
+
+    Replication Controllerはリソース名自体に"Controller"とつくため、コントローラーは"RepplicationManager"という名前になっています。(参考: [replication_controller.go#L63-L64のコメント](https://github.com/kubernetes/kubernetes/blob/b8d000853edbfe3d0d9bcd85e8e511a98b6ac6af/pkg/controller/replication/replication_controller.go#L63-L64))
 
 下記は`kube-controller-manager`をpprofで見た、goroutineで起動する各コントローラーに関する処理の一覧です。
 
@@ -149,8 +164,6 @@ iptablesを使う高速な`iptables`モードと、ユーザスペースで処�
 参考
 
 - http://kubernetes.io/docs/admin/kube-proxy/
-
-
 
 ## その他のコンポーネント
 
@@ -239,20 +252,3 @@ heapsterはクラスタ全体の使用状況を集約するためのコンポー
 
 - https://github.com/kubernetes/heapster
 - http://blog.kubernetes.io/2015/05/resource-usage-monitoring-kubernetes.html
-
-### Helm (Deployment Manager)
-
-HelmはKubernetesの設定をテンプレート化しデプロイを管理しやすくする仕組みです。テンプレートはChartsと呼ばれ、公式でテンプレートのレポジトリ[kubernetes/charts](https://github.com/kubernetes/charts)が用意されています。現在は開発段階のようです。イメージとしてはhomebrewのように、kubernetesの設定ファイルを書くことなくデプロイを行えるもののようです。
-
-```console
-$ helm install redis-cluster
-# replication controllerやserviceが作られる
-```
-
-[Jinja](http://jinja.pocoo.org/)というテンプレートが使われていて、Kubernetesの各種設定ファイルを展開してカスタマイズできる仕組みのようです。(e.g. [redis.jinja](https://github.com/kubernetes/charts/blob/master/redis-dm/templates/redis.jinja))
-
-もともとはDeisのHelmというプロジェクトと、Kubernetesチームが開発するdeployment-manager(dm)という2つのツールがあったようです。[Integrate helm and dm #171](https://github.com/kubernetes/helm/issues/171)というIssueによると、ハッカソンでこの2つを統合すると決めたらしく、レポジトリ名も"deployment-manager"から"helm"に変更したようです。
-
-- http://kubernetes.io/docs/admin/cluster-components/
-- https://github.com/kubernetes/kubernetes/blob/master/docs/design/architecture.md
-
