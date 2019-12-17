@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+     <loc>https://b4b4r07.github.io/kbase/guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://b4b4r07.github.io/kbase/references/kubernetes/pdb/</loc>
      <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
