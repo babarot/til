@@ -103,8 +103,10 @@ nav:
   - Concepts:
     - Kubernetes:
       - Conponents: concepts/kubernetes/components.md
+      - Health Check: concepts/kubernetes/healthcheck.md
       - Helm: concepts/kubernetes/helm.md
   - Guides:
       - GKE と Cloud Run、どう使い分けるべきか: guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers.md
+      - ReplicaSetとDeploymentの違い: guides/kubernetes/replicaset-vs-deployment.md
   - References:
     - Kubernetes: references/kubernetes.md
