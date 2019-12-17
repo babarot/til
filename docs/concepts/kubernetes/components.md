@@ -1,11 +1,4 @@
-# Kubernetesの構成コンポーネント
-
-[Source](https://qiita.com/tkusumi/items/c2a92cd52bfdb9edd613)
-
-Kubernetesの構成コンポーネントについて一覧をまとめてみました。Kubernetes 1.2時点での情報です。
-
-!!! info "注釈"
-    :link:: 外部のプロジェクト
+# Kubernetesを構成するコンポーネント郡
 
 コンポーネント|種別|説明
 ---|---|---
@@ -17,13 +10,15 @@ Kubernetesの構成コンポーネントについて一覧をまとめてみま�
 [kube-proxy](#kube-proxy) | node | KubernetesのServiceが持つ仮想的なIPアドレス(cluster IP)へのアクセスをルーティングする
 [container-runtime](#container-runtime) | node | コンテナの実行形態で多くの場合はDockerが使用されている
 kubectl | client | KubernetesのCLIクライアント
-[hyperkube](#hyperkube-all-in-oneバイナリ) | misc | Kubernetes関連のバイナリを1つにまとめたall-in-oneバイナリ
 [pause](#Pauseコンテナ) | misc | pod内のネットワークnamespaceを保持するコンテナ
 [pod-master](#pod-master) | add-on | High-Availability構成時にscheduler, controllerがどのMasterで動くかを調整するコンテナ
 [kube-dns](#kube-dns) | add-on | クラスタ内DNSのPod
 [SkyDNS :link:](#skydns-link) | add-on | クラスタ内DNSのDNSサーバー
 [kube2sky](#kube2sky) | add-on | SkyDNSにKubernetesの情報を反映させるブリッジ
 [heapster](#heapster) | add-on | Kuernetesのパフォーマンス情報を集約する仕組み
+
+!!! info "注釈"
+    :link: マークは外部のプロジェクト
 
 ## アーキテクチャ
 
@@ -188,23 +183,17 @@ kubeletは各ノードで動作するエージェントで、Nodeのメイン処
 
 ### kube-proxy
 
-!!! quote
+kube-proxyはKubernetesのServiceオブジェクトを元にルーティングを行う。
 
-    kube-proxyはKubernetesのServiceオブジェクトを元にルーティングを行う。
+実体はiptablesのルールを発行し、パケットの制御を行っている。
 
-    実体はiptablesのルールを発行し、パケットの制御を行っている。
+この実装は切り替えることができ、以下の中から選択できる。
 
-    この実装は切り替えることができ、以下の中から選択できる。
+- userspace
+- iptables
+- ipvs(experimental)
 
-    - userspace
-    - iptables
-    - ipvs(experimental)
-
-    デフォルトでiptablesが使われる。
-
-kube-proxyは各ノードで動作する、Serviceが持つ仮想的なCluster IPを転送するためのネットワークProxyです。ロードバランスは現状ではラウンドロビンのみがサポートされます。
-
-iptablesを使う高速な`iptables`モードと、ユーザスペースで処理する`userspace`の2つのモードがあり、起動時の`--proxy-mode`オプションで指定できます。オプションを指定しない場合、使用可能であれば`iptables`がデフォルトで選ばれます。ノードのアノテーション`net.experimental.kubernetes.io/proxy-mode`を使ってノードごとに設定することも可能です。`iptables`モードを使った場合、ラウンドロビンは[stasticモジュール](https://linuxjm.osdn.jp/html/iptables/man8/iptables-extensions.8.html#lbCC)によって行われます。
+デフォルトでiptablesが使われる。
 
 参考
 
@@ -232,27 +221,6 @@ KubernetesではこのContainer Runtimeを差し替えることが出来る。 �
 大抵のKubernetesのマネージドサービスではDockerが使用されている。 (実際の所Dockerの中身はcontainerdだ)
 
 ## その他のコンポーネント
-
-### hyperkube (all-in-oneバイナリ)
-
-hyperkubeはKubernetes関連のバイナリを1つにまとめた、all-in-oneバイナリです。第一引数にコンポーネントの名前を指定して使います。また、busyboxの様にsymlinkをコンポーネント名にして使うこともできます。
-
-Kubernetesのリリース毎にDockerイメージ(`gcr.io/google_containers/hyperkube-amd64`)も更新されており、Kubernetesのコンポーネントをkubelet上で動かす場合は、hyperkubeのDockerイメージを使用するのが一般的です(e.g. [Masterコンポーネントの定義ファイルmaster.json](https://github.com/kubernetes/kubernetes/blob/master/cluster/images/hyperkube/master.json))。
-
-対応コンポーネントは以下です。括弧内は元のバイナリ名です。
-
-- kubectl (`kubectl`)
-- apiserver (`kube-apisever`)
-- controller-manager (`kube-controller-manager`)
-- scheduler (`kube-scheduler`)
-- kubelet (`kubelet`)
-- proxy (`kube-proxy`)
-
-```console
-$ hyperkube kubectl get nodes
-```
-
-参考: https://github.com/kubernetes/kubernetes/blob/master/cmd/hyperkube/main.go
 
 ### Pauseコンテナ
 
@@ -318,3 +286,10 @@ heapsterはクラスタ全体の使用状況を集約するためのコンポー
 
 - https://github.com/kubernetes/heapster
 - http://blog.kubernetes.io/2015/05/resource-usage-monitoring-kubernetes.html
+
+## 参考
+
+- [Kubernetesのコンポーネント - Kubernetes](https://kubernetes.io/ja/docs/concepts/overview/components/)
+- [Kubernetes道場 24日目 - Kubernetesの各コンポーネントについて - Toku's Blog](https://cstoku.dev/posts/2018/k8sdojo-24/)
+- [Kubernetes: 構成コンポーネント一覧 - Qiita](https://qiita.com/tkusumi/items/c2a92cd52bfdb9edd613)
+- [転職したら Kubernetes だった件 / That Time I Changed Jobs as a Kubernetes. - Speaker Deck](https://speakerdeck.com/superbrothers/that-time-i-changed-jobs-as-a-kubernetes)
