@@ -2,7 +2,7 @@
 site_name: 'Documentations'
 site_description: 'Personal documentations about what I learn'
 site_author: 'Masaki ISHIYAMA'
-site_url: 'https://b4b4r07.github.io/journey/'
+site_url: 'https://b4b4r07.github.io/til/'
 docs_dir: docs
 
 theme:
@@ -90,11 +90,11 @@ extra_css:
   - https://unpkg.com/mermaid@8.4.2/dist/mermaid.css
 
 # Repository
-repo_name: b4b4r07/journey
-repo_url: https://github.com/b4b4r07/journey
+repo_name: b4b4r07/til
+repo_url: https://github.com/b4b4r07/til
 edit_uri: edit/master/docs
 # repo_name: '<i class="fa fa-heart-o"></i> babarot'
-# repo_url: 'https://github.com/b4b4r07/journey'
+# repo_url: 'https://github.com/b4b4r07/til'
 
 # Copyright
 copyright: 'Copyright &copy; 2019 Masaki ISHIYAMA'
