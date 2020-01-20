@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-     <loc>https://b4b4r07.github.io/journey/concepts/kubernetes/components/</loc>
-     <lastmod>2019-12-17</lastmod>
+     <loc>https://b4b4r07.github.io/til/concepts/kubernetes/components/</loc>
+     <lastmod>2020-01-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://b4b4r07.github.io/journey/concepts/kubernetes/healthcheck/</loc>
-     <lastmod>2019-12-17</lastmod>
+     <loc>https://b4b4r07.github.io/til/concepts/kubernetes/healthcheck/</loc>
+     <lastmod>2020-01-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://b4b4r07.github.io/journey/concepts/kubernetes/helm/</loc>
-     <lastmod>2019-12-17</lastmod>
+     <loc>https://b4b4r07.github.io/til/concepts/kubernetes/helm/</loc>
+     <lastmod>2020-01-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://b4b4r07.github.io/journey/guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers/</loc>
-     <lastmod>2019-12-17</lastmod>
+     <loc>https://b4b4r07.github.io/til/guides/when-to-use-google-kubernetes-engine-vs-cloud-run-for-containers/</loc>
+     <lastmod>2020-01-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://b4b4r07.github.io/journey/guides/kubernetes/replicaset-vs-deployment/</loc>
-     <lastmod>2019-12-17</lastmod>
+     <loc>https://b4b4r07.github.io/til/guides/kubernetes/replicaset-vs-deployment/</loc>
+     <lastmod>2020-01-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://b4b4r07.github.io/journey/references/kubernetes/</loc>
-     <lastmod>2019-12-17</lastmod>
+     <loc>https://b4b4r07.github.io/til/references/kubernetes/</loc>
+     <lastmod>2020-01-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
